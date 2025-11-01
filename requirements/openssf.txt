@@ -1,0 +1,6 @@
+# OpenSSF Model Signing dependencies
+model-signing>=0.1.0
+
+# Sigstore dependencies (typically installed with model-signing)
+# sigstore>=2.0.0
+# sigstore-protobuf-specs>=0.2.0

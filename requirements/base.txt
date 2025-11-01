@@ -1,0 +1,6 @@
+# Core dependencies for SecureML
+# model-signing>=0.1.0  # Not yet on PyPI - install manually: pip install git+https://github.com/sigstore/model-transparency
+cryptography>=41.0.0
+joblib>=1.3.0
+pyyaml>=6.0
+typing-extensions>=4.7.0; python_version<'3.10'
