@@ -24,8 +24,8 @@ The AI industry has experienced exponential growth, with the global AI market pr
 
 To address these challenges, a robust and verifiable watermarking solution is essential. The AI Model Watermarking will be an open-source initiative aimed at developing a comprehensive solution for embedding and detecting watermarks in AI and ML models. This application will enable individuals and organizations to protect their intellectual property and verify the authenticity of models in deployment. With proper watermarking, organizations can reduce unauthorized usage by up to 85% and cut compliance costs by 60%.
 
-# 
-## 
+#
+
 ### Key Objectives
 
 * Develop zero-knowledge proof-based watermarking techniques for various types of AI/ML models.
