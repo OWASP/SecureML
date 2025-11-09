@@ -1,0 +1,20 @@
+# Optional ML framework dependencies
+# Install only what you need for your models
+
+# Traditional ML
+xgboost>=2.0.0
+scikit-learn>=1.3.0
+lightgbm>=4.0.0
+catboost>=1.2.0
+
+# Deep Learning
+torch>=2.0.0
+tensorflow>=2.13.0
+
+# LLMs
+transformers>=4.30.0
+safetensors>=0.3.0
+
+# ONNX
+onnx>=1.14.0
+onnxruntime>=1.15.0

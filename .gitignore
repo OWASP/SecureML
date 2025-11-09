@@ -1,3 +1,96 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# ML Models (don't commit models)
+*.pkl
+*.pth
+*.pt
+*.h5
+*.pb
+*.onnx
+*.model
+*.cbm
+*.joblib
+
+# SecureML packages
+*.sml/
+*.sig
+
+# Secrets and keys
+*.pem
+*.key
+*.pub
+*.p12
+*.pfx
+.env
+secrets/
+credentials/
+
+# Logs
+*.log
+logs/
+audit.log
+
+# Documentation build
+docs/_build/
+site/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+tmp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# docs
+SECURITY.md
+DISTRIBUT*.md
+release.sh
 /Gemfile
 /Gemfile.lock
 /favicon.ico
