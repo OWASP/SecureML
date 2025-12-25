@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "secureaiml"
-version = "0.1.2"
+version = "0.1.3"
 description = "Enterprise-Ready AI Model Security built on OpenSSF Model Signing"
 authors = [
-    {name = "SecureML Team", email = "team@secureml.ai"}
+    {name = "Krish", email = "krish.dhar@owasp.org"}
 ]
 license = {file = "LICENSE"}
 readme = "README.md"
@@ -115,11 +115,11 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://secureml.ai"
-Documentation = "https://docs.secureml.ai"
-Repository = "https://github.com/secureml/secureml"
-Issues = "https://github.com/secureml/secureml/issues"
-Changelog = "https://github.com/secureml/secureml/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/OWASP/SecureML"
+Documentation = "https://github.com/OWASP/SecureML/blob/master/secureml/docs/"
+Repository = "https://github.com/OWASP/SecureML"
+Issues = "https://github.com/OWASP/SecureML/issues"
+Changelog = "https://github.com/OWASP/SecureML/blob/master/secureml/CHANGELOG.md"
 
 [project.scripts]
 secureml = "secureml.cli.main:cli"

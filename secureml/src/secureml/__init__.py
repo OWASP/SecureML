@@ -13,7 +13,7 @@ Features:
 - Simple, elegant API for developers
 """
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 __author__ = "SecureML Team"
 __license__ = "Apache-2.0"
 
