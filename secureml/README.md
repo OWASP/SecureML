@@ -7,7 +7,7 @@ SecureML is the "Stripe for model security" - making enterprise-grade AI model p
 ## Quick Start
 
 ```bash
-pip install secureml
+pip install secureml-owasp
 ```
 
 ```python
