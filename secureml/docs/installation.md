@@ -2,27 +2,26 @@
 
 ## Prerequisites
 
-- Python 3.9 or higher
+- Python 3.8 or higher
 - pip package manager
-- (Optional) OpenSSF model-signing CLI
 
 ## Basic Installation
 
-### Install from PyPI (when published)
+### Install from PyPI
 
 ```bash
-pip install secureml
+pip install secureaiml
 ```
 
 ### Install from Source
 
 ```bash
 # Clone the repository
-git clone https://github.com/secureml/secureml.git
-cd secureml
+git clone https://github.com/OWASP/SecureML.git
+cd SecureML/secureml
 
 # Install in development mode
-pip install -e .
+pip install -e src
 ```
 
 ## Optional Dependencies
@@ -33,22 +32,22 @@ Install support for specific ML frameworks:
 
 ```bash
 # XGBoost
-pip install secureml[xgboost]
+pip install secureaiml[xgboost]
 
 # PyTorch
-pip install secureml[pytorch]
+pip install secureaiml[pytorch]
 
 # TensorFlow
-pip install secureml[tensorflow]
+pip install secureaiml[tensorflow]
 
 # scikit-learn
-pip install secureml[sklearn]
+pip install secureaiml[sklearn]
 
 # HuggingFace Transformers
-pip install secureml[huggingface]
+pip install secureaiml[huggingface]
 
 # All ML frameworks
-pip install secureml[ml-all]
+pip install secureaiml[ml-all]
 ```
 
 ### CLI Interface
@@ -56,7 +55,7 @@ pip install secureml[ml-all]
 For rich CLI experience:
 
 ```bash
-pip install secureml[cli]
+pip install secureaiml[cli]
 ```
 
 ### Enterprise Features
@@ -64,7 +63,7 @@ pip install secureml[cli]
 For HSM/KMS integration:
 
 ```bash
-pip install secureml[enterprise]
+pip install secureaiml[enterprise]
 ```
 
 ### Development Tools
@@ -72,7 +71,7 @@ pip install secureml[enterprise]
 For development:
 
 ```bash
-pip install secureml[dev]
+pip install secureaiml[dev]
 ```
 
 ### Complete Installation
@@ -80,21 +79,7 @@ pip install secureml[dev]
 Install everything:
 
 ```bash
-pip install secureml[all]
-```
-
-## OpenSSF Model Signing
-
-SecureML requires OpenSSF model-signing to be installed:
-
-```bash
-pip install model-signing
-```
-
-Verify installation:
-
-```bash
-model-signing --version
+pip install secureaiml[all]
 ```
 
 ## Verification
@@ -111,33 +96,24 @@ print("SecureML installed successfully!")
 
 ## Troubleshooting
 
-### Issue: OpenSSF not found
-
-```bash
-# Install OpenSSF model-signing
-pip install model-signing
-
-# Verify it's in PATH
-which model-signing
-```
-
 ### Issue: Import errors
 
 ```bash
-# Reinstall SecureML
-pip uninstall secureml
-pip install secureml
+# Reinstall SecureAIML
+pip uninstall secureaiml
+pip install secureaiml
 ```
 
 ### Issue: Permission errors
 
 ```bash
 # Install with --user flag
-pip install --user secureml
+pip install --user secureaiml
 ```
 
 ## Next Steps
 
 - [Quick Start Guide](quickstart.md)
-- [Basic Examples](../examples/basic_usage/)
-- [API Reference](api_reference/)
+- [Usage Guide](USAGE_GUIDE.md)
+- [Watermarking Features](WATERMARKING_FEATURES.md)
+- [Examples](../examples/)
