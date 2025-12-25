@@ -25,7 +25,7 @@ You now have **TWO comprehensive interactive demos** for ML model watermarking a
 ### Want to Learn Watermarking Techniques?
 **Run the Interactive Demo:**
 ```bash
-cd /home/roger/dev/code/SecureML/secureml
+cd <repository>/secureml
 ./RUN_INTERACTIVE_DEMO.sh
 ```
 **Time:** 5-10 minutes | **Interaction:** High | **Focus:** Learning
@@ -33,7 +33,7 @@ cd /home/roger/dev/code/SecureML/secureml
 ### Want to See Security in Action?
 **Run the Security Attack Demo:**
 ```bash
-cd /home/roger/dev/code/SecureML/secureml
+cd <repository>/secureml
 ./RUN_SECURITY_DEMO.sh
 ```
 **Time:** 10 minutes | **Interaction:** Low (auto-advance) | **Focus:** Threats
@@ -54,7 +54,6 @@ cd /home/roger/dev/code/SecureML/secureml
 | Feature | Interactive Demo | Security Demo |
 |---------|-----------------|---------------|
 | **Purpose** | Learn watermarking | See attacks defeated |
-| **Style** | Hands-on tutorial | Dramatic simulation |
 | **Models** | 5 types (RF, GB, LR, SVM, XGB) | Random Forest |
 | **Techniques** | 3 (Parameter, Trigger, Statistical) | Trigger Set focused |
 | **Scenarios** | 1 training workflow | 5 attack scenarios |
@@ -63,74 +62,6 @@ cd /home/roger/dev/code/SecureML/secureml
 | **Learning** | HOW to watermark | WHY to watermark |
 | **Output** | Educational | Dramatic |
 | **Best For** | ML engineers | Security teams/executives |
-
----
-
-## 🎯 Learning Paths
-
-### Path 1: Developer Learning Path
-**Goal:** Implement watermarking in your ML pipeline
-
-```bash
-1. ./RUN_INTERACTIVE_DEMO.sh
-   → Try all 3 watermarking techniques
-   → Experiment with different models
-   → Understand configuration options
-
-2. Read: examples/INTERACTIVE_DEMO_README.md
-   → Deep dive into techniques
-   → Learn best practices
-
-3. Study: examples/watermarking_example.py
-   → See production code
-   → Understand API usage
-
-4. Implement in your project
-   → Add watermarking to pipeline
-   → Set up verification
-```
-
-### Path 2: Security Understanding Path
-**Goal:** Understand ML security threats and defenses
-
-```bash
-1. ./RUN_SECURITY_DEMO.sh
-   → See all 5 attack scenarios
-   → Watch defenses work
-   → Understand detection
-
-2. Read: SECURITY_DEMO_SUMMARY.md
-   → Detailed attack analysis
-   → Defense strategies
-   → Real-world impact
-
-3. ./RUN_INTERACTIVE_DEMO.sh
-   → Learn implementation details
-   → Try different techniques
-
-4. Plan security strategy
-   → Identify vulnerable models
-   → Choose watermarking approach
-```
-
-### Path 3: Executive Briefing Path
-**Goal:** Understand ROI and business impact
-
-```bash
-1. ./RUN_SECURITY_DEMO.sh
-   → See $500K theft prevented
-   → See leak source identified
-   → See attack resilience
-
-2. Read: SECURITY_DEMO_SUMMARY.md
-   → Business value section
-   → ROI calculations
-   → Compliance benefits
-
-3. Make decisions
-   → Budget for watermarking
-   → Set security policies
-```
 
 ---
 
@@ -234,31 +165,6 @@ Results:
 - 💰 Business impact
 
 **Read More:** `SECURITY_DEMO_SUMMARY.md`
-
----
-
-## 🎓 What You'll Learn
-
-### Technical Skills
-- ✅ How to embed watermarks
-- ✅ How to verify watermarks
-- ✅ How to configure parameters
-- ✅ How to detect attacks
-- ✅ How to trace leaks
-
-### Security Knowledge
-- ✅ Real ML security threats
-- ✅ Attack methodologies
-- ✅ Defense strategies
-- ✅ Detection techniques
-- ✅ Incident response
-
-### Business Understanding
-- ✅ IP protection value ($500K+ per model)
-- ✅ Legal evidence requirements
-- ✅ Compliance benefits
-- ✅ ROI calculations
-- ✅ Risk mitigation
 
 ---
 
@@ -441,33 +347,6 @@ echo -e "\n\n\n\n\n\n\n\n" | python3 examples/security_attack_demo.py
 
 ---
 
-## 💪 Next Steps
-
-### Immediate (Right Now!)
-```bash
-# Choose one:
-./RUN_SECURITY_DEMO.sh      # See threats
-./RUN_INTERACTIVE_DEMO.sh   # Learn techniques
-```
-
-### Today
-1. Run both demos
-2. Read documentation
-3. Share with team
-
-### This Week
-1. Identify models to watermark
-2. Choose watermarking technique
-3. Plan implementation
-
-### This Month
-1. Integrate into ML pipeline
-2. Set up verification monitoring
-3. Document security policies
-4. Train team on practices
-
----
-
 ## 🎯 Choose Your Adventure
 
 ### "Show me why watermarking matters"
@@ -487,38 +366,11 @@ echo -e "\n\n\n\n\n\n\n\n" | python3 examples/security_attack_demo.py
 
 ---
 
-## 🌟 What Makes These Demos Special
-
-### Comprehensive
-- ✅ 5 attack scenarios (security)
-- ✅ 5 model types (interactive)
-- ✅ 3 watermarking techniques
-- ✅ 100% detection success
-
-### Educational
-- ✅ Color-coded output
-- ✅ Step-by-step guidance
-- ✅ Real-world context
-- ✅ Best practices
-
-### Production-Ready
-- ✅ Actual working code
-- ✅ Real detection methods
-- ✅ Proven techniques
-- ✅ Integration examples
-
-### Dramatic
-- ✅ Engaging narratives
-- ✅ Real threat scenarios
-- ✅ Business impact
-- ✅ Success demonstrations
-
----
 
 ## 🔥 Ready to Explore?
 
 ```bash
-cd /home/roger/dev/code/SecureML/secureml
+cd <repository>/secureml
 
 # Start with security (recommended)
 ./RUN_SECURITY_DEMO.sh

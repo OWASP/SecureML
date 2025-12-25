@@ -7,7 +7,7 @@ An **interactive security simulation** that demonstrates **real-world attacks** 
 ## 🎯 Quick Start
 
 ```bash
-cd /home/roger/dev/code/SecureML/secureml
+cd <repository>/secureml
 source venv/bin/activate
 python3 examples/security_attack_demo.py
 ```
@@ -222,7 +222,7 @@ Each scenario shows:
 ### Full Interactive Mode
 
 ```bash
-cd /home/roger/dev/code/SecureML/secureml
+cd <repository>/secureml
 source venv/bin/activate
 python3 examples/security_attack_demo.py
 ```
@@ -418,7 +418,7 @@ python3 examples/security_attack_demo.py
 ## 🎬 Ready to See Attacks Defeated?
 
 ```bash
-cd /home/roger/dev/code/SecureML/secureml
+cd <repository>/secureml
 source venv/bin/activate
 python3 examples/security_attack_demo.py
 ```

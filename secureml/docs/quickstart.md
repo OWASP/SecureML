@@ -1,12 +1,11 @@
 # Quick Start Guide
 
-Get started with SecureML in 5 minutes!
+Get started with SecureAIML in 5 minutes!
 
-## 1. Install SecureML
+## 1. Install SecureAIML
 
 ```bash
-pip install secureml
-pip install model-signing  # OpenSSF dependency
+pip install secureaiml
 ```
 
 ## 2. Basic Usage
@@ -156,10 +155,10 @@ print(f"Status: {report['overall_status']}")
 ## Next Steps
 
 - [Installation Guide](installation.md)
-- [Model Support](model_support.md)
-- [Enterprise Features](enterprise_features.md)
+- [Usage Guide](USAGE_GUIDE.md)
+- [Watermarking Features](WATERMARKING_FEATURES.md)
+- [Threat Model](threat_model.md)
 - [Examples](../examples/)
-- [API Reference](api_reference/)
 
 ## Common Patterns
 
@@ -215,6 +214,7 @@ upload_to_registry("model.sml")
 
 ## Support
 
-- Documentation: https://docs.secureml.ai
-- Examples: https://github.com/secureml/secureml/tree/main/examples
-- Issues: https://github.com/secureml/secureml/issues
+- Documentation: https://github.com/OWASP/SecureML/tree/master/secureml/docs
+- Examples: https://github.com/OWASP/SecureML/tree/master/secureml/examples
+- Issues: https://github.com/OWASP/SecureML/issues
+- PyPI: https://pypi.org/project/secureaiml/

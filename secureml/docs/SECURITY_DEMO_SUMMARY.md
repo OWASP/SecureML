@@ -46,13 +46,13 @@ A comprehensive **interactive security demo** that simulates **5 real-world atta
 
 ### Method 1: Simple Launcher (Easiest!)
 ```bash
-cd /home/roger/dev/code/SecureML/secureml
+cd <repository>/secureml
 ./RUN_SECURITY_DEMO.sh
 ```
 
 ### Method 2: Direct Command
 ```bash
-cd /home/roger/dev/code/SecureML/secureml
+cd <repository>/secureml
 source venv/bin/activate
 python3 examples/security_attack_demo.py
 ```
@@ -413,7 +413,7 @@ Background:
 ## 🚀 Ready to See Attacks Defeated?
 
 ```bash
-cd /home/roger/dev/code/SecureML/secureml
+cd <repository>/secureml
 ./RUN_SECURITY_DEMO.sh
 ```
 

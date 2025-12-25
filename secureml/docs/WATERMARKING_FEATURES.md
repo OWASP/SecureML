@@ -308,7 +308,7 @@ result = secure_model.embed_watermark(
 ### 1. Run the Interactive Demo
 
 ```bash
-cd /home/roger/dev/code/SecureML/secureml
+cd <repository>/secureml
 source venv/bin/activate
 python3 examples/interactive_watermarking_demo.py
 ```

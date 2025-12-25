@@ -34,7 +34,7 @@ Two comprehensive interactive demos for ML model watermarking and security:
 
 ### Try the Security Demo (Recommended First!)
 ```bash
-cd /home/roger/dev/code/SecureML/secureml
+cd <repository>/secureml
 ./RUN_SECURITY_DEMO.sh
 ```
 *Just press Enter at each pause - watch attacks get defeated!*
