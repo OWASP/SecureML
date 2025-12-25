@@ -1,0 +1,20 @@
+audience:
+  - breaker
+  - builder
+leaders:
+  - name: Krishanu Dhar
+    email: krish.dhar@owasp.org
+    github: ronykris
+level: 2
+name: OWASP AI Model Watermarking
+pitch: A very brief, one-line description of your project
+repositories:
+  - name: www-project-ai-model-watermarking
+    url: https://github.com/OWASP/www-project-ai-model-watermarking
+    description: OWASP Foundation web repository
+tags:
+  - example-tag
+  - custom-tag-1
+  - custom-tag-2
+type: code
+website: https://owasp.org/www-project-ai-model-watermarking
