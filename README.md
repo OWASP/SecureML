@@ -1,16 +1,26 @@
-# SecureML 🔐
+# SecureAIML 🔐
 
 **Enterprise-Ready AI Model Security built on OpenSSF Model Signing**
 
-SecureML is the "Stripe for model security" - making enterprise-grade AI model protection accessible, user-friendly, and production-ready for every organization.
+SecureAIML is the "Stripe for model security" - making enterprise-grade AI model protection accessible, user-friendly, and production-ready for every organization.
 
+[![PyPI version](https://badge.fury.io/py/secureaiml.svg)](https://pypi.org/project/secureaiml/)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![OpenSSF](https://img.shields.io/badge/OpenSSF-Model_Signing-green.svg)](https://github.com/sigstore/model-transparency)
+[![Tests](https://github.com/OWASP/SecureML/actions/workflows/test.yml/badge.svg)](https://github.com/OWASP/SecureML/actions/workflows/test.yml)
 
-## Why SecureML?
+## Why SecureAIML?
 
-In the era of AI/ML, model security is critical. SecureML wraps the powerful [OpenSSF Model Signing](https://github.com/sigstore/model-transparency) standard with an intuitive, enterprise-ready interface that makes securing your ML models as simple as:
+In the era of AI/ML, model security is critical. SecureAIML wraps the powerful [OpenSSF Model Signing](https://github.com/sigstore/model-transparency) standard with an intuitive, enterprise-ready interface that makes securing your ML models as simple as:
+
+## Installation
+
+```bash
+pip install secureaiml
+```
+
+## Quick Start
 
 ```python
 from secureml import SecureModel
@@ -59,24 +69,6 @@ predictions = verified_model.predict(X_test)
 - Minimal configuration required
 - Works with existing ML workflows
 - Extensive documentation and examples
-
-## Quick Start
-
-### Installation
-
-```bash
-# Install SecureML
-pip install secureml
-
-# Install with ML framework support
-pip install secureml[xgboost,pytorch,sklearn]
-
-# Install with CLI
-pip install secureml[cli]
-
-# Install everything
-pip install secureml[all]
-```
 
 ### Basic Usage
 
@@ -185,13 +177,14 @@ SecureML helps you meet regulatory requirements:
 
 ## Documentation
 
-- [Installation Guide](docs/installation.md)
-- [Quick Start Tutorial](docs/quickstart.md)
-- [OpenSSF Integration](docs/openssf_integration.md)
-- [Model Support Matrix](docs/model_support.md)
-- [Enterprise Features](docs/enterprise_features.md)
-- [API Reference](docs/api_reference/)
-- [Examples](examples/)
+- 📦 **[PyPI Package](https://pypi.org/project/secureaiml/)** - Official package on PyPI
+- 🚀 **[Quick Start Guide](secureml/docs/QUICKSTART.md)** - Get started in 5 minutes
+- 🛡️ **[Threat Model](secureml/docs/threat_model.md)** - Security analysis and limitations
+- 📚 **[Usage Guide](secureml/docs/USAGE_GUIDE.md)** - Comprehensive usage documentation
+- 🎨 **[Interactive Demos](secureml/docs/README_DEMOS.md)** - Live demos and examples
+- 🔒 **[Watermarking Features](secureml/docs/WATERMARKING_FEATURES.md)** - Model watermarking guide
+- 🔗 **[OpenSSF Integration](secureml/docs/openssf_integration.md)** - OpenSSF Model Signing integration
+- 📖 **[Complete Demo Guide](secureml/docs/COMPLETE_DEMO_GUIDE.md)** - Full demo walkthrough
 
 ## Examples
 
@@ -229,6 +222,22 @@ model.save_pretrained("./my_model")
 
 secure_model = SecureModel.load_from_path("./my_model")
 secure_model.sign_and_save("bert_model.sml", identity="llm-team@company.com")
+```
+
+## Installation Options
+
+```bash
+# Basic installation
+pip install secureaiml
+
+# With ML framework support
+pip install secureaiml[xgboost,pytorch,sklearn]
+
+# With CLI tools
+pip install secureaiml[cli]
+
+# Everything (all ML frameworks + CLI + dev tools)
+pip install secureaiml[all]
 ```
 
 ## CLI Usage
@@ -299,11 +308,20 @@ Built on top of:
 
 ## Support
 
-- 📧 Email: support@secureml.ai
-- 💬 Discord: [Join our community](https://discord.gg/secureml)
-- 🐛 Issues: [GitHub Issues](https://github.com/secureml/secureml/issues)
-- 📖 Docs: [docs.secureml.ai](https://docs.secureml.ai)
+- 🐛 **Issues:** [GitHub Issues](https://github.com/OWASP/SecureML/issues)
+- 💬 **Discussions:** [GitHub Discussions](https://github.com/OWASP/SecureML/discussions)
+- 📖 **Documentation:** [GitHub Docs](https://github.com/OWASP/SecureML/tree/master/secureml/docs)
+- 📦 **PyPI:** [pypi.org/project/secureaiml](https://pypi.org/project/secureaiml/)
+
+## OWASP Project
+
+SecureAIML is an OWASP project focused on making ML model security accessible to everyone.
+
+- **OWASP Page:** [OWASP SecureML](https://owasp.org/www-project-secureml/)
+- **GitHub:** [OWASP/SecureML](https://github.com/OWASP/SecureML)
 
 ---
 
-**SecureML** - Making AI model security accessible to everyone 🚀
+**SecureAIML** - Making AI model security accessible to everyone 🚀
+
+*An OWASP Project*
