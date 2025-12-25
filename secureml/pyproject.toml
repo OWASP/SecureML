@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "secureaiml"
-version = "0.1.1"
+version = "0.1.2"
 description = "Enterprise-Ready AI Model Security built on OpenSSF Model Signing"
 authors = [
     {name = "SecureML Team", email = "team@secureml.ai"}
