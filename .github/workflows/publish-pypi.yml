@@ -1,0 +1,53 @@
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+  # Or manually trigger
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write  # Required for trusted publishing
+
+jobs:
+  build-and-publish:
+    name: Build and publish to PyPI
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+
+      - name: Run tests
+        run: |
+          cd secureml
+          pip install -e ".[dev]"
+          pytest tests/unit/ -v
+
+      - name: Build distribution
+        run: |
+          cd secureml
+          python -m build
+
+      - name: Check package
+        run: |
+          cd secureml
+          twine check dist/*
+
+      - name: Publish to PyPI (Trusted Publishing)
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: secureml/dist/
+          # If trusted publishing not configured, use API token:
+          # password: ${{ secrets.PYPI_API_TOKEN }}

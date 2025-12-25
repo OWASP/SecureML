@@ -30,6 +30,7 @@ from datetime import datetime
 from ..core.openssf_wrapper import OpenSSFWrapper
 from ..core.model_detector import UniversalModelDetector, ModelType
 from ..core.fingerprint import ModelFingerprint
+from ..core.watermark import ModelWatermark, WatermarkConfig, WatermarkType, TriggerSet
 from ..utils.config import SecurityConfig, SecurityLevel
 from ..utils.logging import get_logger
 from ..utils.exceptions import SecurityError, SigningError, VerificationError
@@ -81,6 +82,7 @@ class SecureModel:
         self._model_path: Optional[Path] = None
         self._signature_path: Optional[Path] = None
         self._metadata: Dict[str, Any] = {}
+        self._watermark: Optional[ModelWatermark] = None
 
         # Security configuration
         if isinstance(security_level, str):
@@ -224,6 +226,11 @@ class SecureModel:
             )
             fingerprint.to_json(output_path / "fingerprint.json")
 
+        # Save watermark data if present
+        if self._watermark:
+            self._watermark.save_watermark(output_path / "watermark.json")
+            logger.info("Watermark data saved to package")
+
         # Save metadata
         with open(output_path / "metadata.json", "w") as f:
             json.dump(self._metadata, f, indent=2)
@@ -234,9 +241,12 @@ class SecureModel:
             "created_with": f"secureml {__version__}",
             "components": ["model.pkl", "model.pkl.sig", "metadata.json"],
             "security_level": self.security_level.value,
+            "has_watermark": self._watermark is not None,
         }
         if include_fingerprint:
             manifest["components"].append("fingerprint.json")
+        if self._watermark:
+            manifest["components"].append("watermark.json")
 
         with open(output_path / "manifest.json", "w") as f:
             json.dump(manifest, f, indent=2)
@@ -355,6 +365,13 @@ class SecureModel:
         secure_model._metadata = metadata
         secure_model._verified = verified
 
+        # Load watermark data if present
+        watermark_path = package_path / "watermark.json"
+        if watermark_path.exists():
+            logger.info("Loading watermark data...")
+            secure_model._watermark = ModelWatermark.load_watermark(watermark_path)
+            logger.info("Watermark data loaded successfully")
+
         logger.info("SecureML package loaded successfully")
         return secure_model
 
@@ -408,10 +425,166 @@ class SecureModel:
 
     def get_info(self) -> Dict[str, Any]:
         """Get complete model information"""
-        return {
+        info = {
             "security_level": self.security_level.value,
             "verified": self.is_verified,
             "model_info": getattr(self, '_model_info', {}),
             "metadata": self._metadata,
             "config": self.config.to_dict(),
         }
+
+        # Add watermark info if present
+        if self._watermark:
+            info["watermark"] = self._watermark.get_info()
+
+        return info
+
+    def embed_watermark(
+        self,
+        owner: str,
+        watermark_type: Union[WatermarkType, str] = WatermarkType.PARAMETER,
+        strength: float = 0.01,
+        trigger_set: Optional[TriggerSet] = None,
+        **kwargs: Any,
+    ) -> Dict[str, Any]:
+        """
+        Embed watermark into the model for IP protection
+
+        This embeds an invisible watermark that can be used to prove
+        ownership of the model. The watermark is designed to be robust
+        against model modifications like fine-tuning or compression.
+
+        Args:
+            owner: Owner identifier (email, organization, etc.)
+            watermark_type: Type of watermarking (parameter, trigger_set, statistical)
+            strength: Watermark strength (0.001-0.1, default 0.01)
+            trigger_set: Optional trigger set for backdoor watermarking
+            **kwargs: Additional watermark configuration options
+
+        Returns:
+            Dictionary with watermark embedding result
+
+        Example:
+            >>> # Parameter watermarking (white-box)
+            >>> result = secure_model.embed_watermark(
+            ...     owner="ml-team@company.com",
+            ...     watermark_type=WatermarkType.PARAMETER,
+            ...     strength=0.01
+            ... )
+            >>> print(f"Watermark ID: {result['watermark_id']}")
+            >>>
+            >>> # Trigger set watermarking (black-box)
+            >>> trigger_set = TriggerSet(
+            ...     inputs=np.array([[1, 2, 3], [4, 5, 6]]),
+            ...     outputs=np.array([0, 1])
+            ... )
+            >>> result = secure_model.embed_watermark(
+            ...     owner="ml-team@company.com",
+            ...     watermark_type=WatermarkType.TRIGGER_SET,
+            ...     trigger_set=trigger_set
+            ... )
+        """
+        if self.model is None:
+            raise ValueError("No model loaded. Load a model first.")
+
+        logger.info(f"Embedding watermark for owner: {owner}")
+
+        # Convert string to enum if needed
+        if isinstance(watermark_type, str):
+            watermark_type = WatermarkType(watermark_type)
+
+        # Create watermark config
+        config = WatermarkConfig(
+            watermark_type=watermark_type,
+            strength=strength,
+            **kwargs
+        )
+
+        # Initialize watermark
+        self._watermark = ModelWatermark(
+            owner=owner,
+            config=config,
+        )
+
+        # Embed watermark
+        result = self._watermark.embed(self.model, trigger_set=trigger_set)
+
+        # Store in metadata
+        self._metadata["watermark"] = {
+            "watermark_id": self._watermark.watermark_id,
+            "owner": owner,
+            "type": watermark_type.value,
+            "embedded_at": datetime.now().isoformat(),
+        }
+
+        logger.info(f"Watermark embedded: {self._watermark.watermark_id}")
+
+        return {
+            "success": result.success,
+            "watermark_id": result.watermark_id,
+            "owner": owner,
+            "type": watermark_type.value,
+            "message": result.message,
+            "timestamp": result.timestamp,
+        }
+
+    def verify_watermark(
+        self,
+        trigger_set: Optional[TriggerSet] = None,
+    ) -> Dict[str, Any]:
+        """
+        Verify embedded watermark in the model
+
+        Args:
+            trigger_set: Optional trigger set for verification
+
+        Returns:
+            Dictionary with verification result and score
+
+        Raises:
+            ValueError: If no watermark has been embedded
+
+        Example:
+            >>> # Verify watermark
+            >>> result = secure_model.verify_watermark()
+            >>> if result['verified']:
+            ...     print(f"Watermark verified! Score: {result['score']:.3f}")
+            ...     print(f"Owner: {result['owner']}")
+            >>> else:
+            ...     print("Watermark verification failed")
+        """
+        if self._watermark is None:
+            raise ValueError(
+                "No watermark available for verification. "
+                "Either embed a watermark or load a watermarked model."
+            )
+
+        logger.info("Verifying watermark...")
+
+        result = self._watermark.verify(self.model, trigger_set=trigger_set)
+
+        logger.info(
+            f"Watermark verification: {'PASSED' if result.success else 'FAILED'} "
+            f"(score: {result.verification_score:.3f})"
+        )
+
+        return {
+            "verified": result.success,
+            "watermark_id": result.watermark_id,
+            "owner": self._watermark.owner,
+            "score": result.verification_score,
+            "message": result.message,
+            "timestamp": result.timestamp,
+        }
+
+    @property
+    def has_watermark(self) -> bool:
+        """Check if model has an embedded watermark"""
+        return self._watermark is not None
+
+    @property
+    def watermark_info(self) -> Optional[Dict[str, Any]]:
+        """Get watermark information"""
+        if self._watermark:
+            return self._watermark.get_info()
+        return None
